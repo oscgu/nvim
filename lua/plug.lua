@@ -68,13 +68,7 @@ return require('packer').startup(function(use)
     use ({
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-            require("null-ls").setup({
-                sources = {
-                    require("null-ls").builtins.formatting.clang_format.with({
-                        extra_args = { "-style=file" }
-                    })
-                },
-            })
+            require("null").setup()
         end,
         requires = { "nvim-lua/plenary.nvim" }
     })
