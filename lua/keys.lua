@@ -23,7 +23,8 @@ map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
 -- Close buffer
 -- map('n', '<C-c>', '<Cmd>BufferClose<CR>', opts)
 
--- Open chad tree | Alt-g
-map('n', '<C-I>', '<Cmd>CHADopen<CR>', opts)
 map('n', '<A-v>', '<Cmd>Telescope find_files<CR>', opts)
+
+-- Format file
+map('n', '=G', '<Cmd>lua vim.lsp.buf.formatting_sync(nil, 20000)<CR>', opts)
 

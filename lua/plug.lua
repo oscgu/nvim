@@ -42,8 +42,6 @@ return require('packer').startup(function(use)
         'max-0406/autoclose.nvim'
     }
 
-    use {'prettier/vim-prettier', run = 'yarn install' }
-
     use { 'nvim-treesitter/nvim-treesitter',
     config = function()
         require("plugins/treesitter")
@@ -61,17 +59,24 @@ return require('packer').startup(function(use)
     use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
         require("plugins/toggleterm")
     end
-}
+    }
 
-use {
-    'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps',
-    config = function()
-        require("chadtree").setup()
-    end
-}
+    use {
+        'norcalli/nvim-colorizer.lua'
+    }
 
-use {
-    'norcalli/nvim-colorizer.lua'
-}
+    use ({
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            require("null-ls").setup({
+                sources = {
+                    require("null-ls").builtins.formatting.clang_format.with({
+                        extra_args = { "-style=file" }
+                    })
+                },
+            })
+        end,
+        requires = { "nvim-lua/plenary.nvim" }
+    })
 
 end)
