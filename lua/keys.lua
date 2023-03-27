@@ -24,7 +24,9 @@ map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
 -- map('n', '<C-c>', '<Cmd>BufferClose<CR>', opts)
 
 map('n', '<A-v>', '<Cmd>Telescope find_files<CR>', opts)
+map('n', '<A-g>', '<Cmd>Telescope live_grep<CR>', opts)
 
 -- Format file
 map('n', '=G', '<Cmd>lua vim.lsp.buf.formatting_sync(nil, 20000)<CR>', opts)
+
 

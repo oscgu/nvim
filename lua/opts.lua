@@ -9,6 +9,8 @@ opt.fileencoding = 'utf8'
 opt.syntax = "ON"
 opt.termguicolors = true
 
+opt.relativenumber = true
+
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.softtabstop = 4
