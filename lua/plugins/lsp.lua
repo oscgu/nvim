@@ -17,3 +17,9 @@ require('lspconfig')['tsserver'].setup {
     capabilities = capabilities
 }
 
+local opts = { noremap=true, silent=true}
+
+vim.api.nvim_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+vim.api.nvim_set_keymap("n", "[d", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+vim.api.nvim_set_keymap("n", "d]", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+

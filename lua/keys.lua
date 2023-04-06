@@ -29,4 +29,8 @@ map('n', '<A-g>', '<Cmd>Telescope live_grep<CR>', opts)
 -- Format file
 map('n', '=G', '<Cmd>lua vim.lsp.buf.formatting_sync(nil, 20000)<CR>', opts)
 
+map('', '<TAB>', ":Neotree toggle<CR>", opts)
 
+-- Gitsigns
+map('n', "gb", "<Cmd>:Gitsigns blame_line<CR>", opts)
+map('n', "gd", "<Cmd>:Gitsigns diffthis<CR>", opts)
