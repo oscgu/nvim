@@ -19,3 +19,10 @@ vim.cmd([[ au BufNewFile,BufRead /*.v setf v ]])
 vim.cmd([[ command! NeotestFile lua require("neotest").run.run(vim.fn.expand("%")) ]])
 vim.cmd([[ command! NeotestSummary lua require("neotest").summary.toggle() ]])
 vim.cmd([[ command! Neotest lua require("neotest").run.run(vim.fn.getcwd()) ]])
+
+vim.cmd([[
+augroup project
+autocmd!
+autocmd BufRead,BufNewFile *.h set filetype=c
+augroup END
+]])

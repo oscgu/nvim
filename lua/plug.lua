@@ -278,6 +278,13 @@ use {
   end
 }
 
+use {
+    "kdheepak/lazygit.nvim",
+    config = function()
+        require("lazygit").setup()
+    end
+}
+
 use({
   "nvim-neotest/neotest",
   requires = {
