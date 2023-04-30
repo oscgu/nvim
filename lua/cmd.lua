@@ -1,4 +1,4 @@
-vim.cmd 'colorscheme material'
+vim.cmd 'colorscheme oxocarbon'
 
 vim.cmd([[
 augroup packer_user_config

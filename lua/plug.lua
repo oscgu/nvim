@@ -1,6 +1,7 @@
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'marko-cerovac/material.nvim'
+
+    use {'nyoom-engineering/oxocarbon.nvim'}
 
     use {
         'neovim/nvim-lspconfig',
@@ -314,5 +315,14 @@ use({
     })
   end,
 })
+
+use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+        require("trouble").setup{
+        }
+    end
+}
 
 end)
