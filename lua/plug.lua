@@ -1,4 +1,36 @@
 return require('packer').startup(function(use)
+    use {
+        'kosayoda/nvim-lightbulb',
+        requires = 'antoinemadec/FixCursorHold.nvim',
+        config = function()
+            require("nvim-lightbulb").setup{
+                autocmd = {
+                    enabled = true
+                }
+            }
+        end
+    }
+
+    use  {
+        "weilbith/nvim-code-action-menu",
+        cmd = "CodeActionMenu",
+    }
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function()
+            require("nvim-autopairs").setup{}
+        end
+    }
+
+    use {
+        'cuducos/yaml.nvim',
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-telescope/telescope.nvim"
+        }
+    }
+
     use 'wbthomason/packer.nvim'
 
     use {'nyoom-engineering/oxocarbon.nvim'}
@@ -27,22 +59,38 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'romgrk/barbar.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'}
+        "akinsho/bufferline.nvim",
+        tag = "*",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("bufferline").setup{
+                options = {
+                    diagnostics = "nvim_lsp",
+                    separator_style = "slope",
+                    hover = {
+                        delay = 200,
+                        enabled = true,
+                    },
+                    always_show_bufferline = true,
+                    offsets = {
+                        {
+                            filetype = "neo-tree",
+                            text = "Tree",
+                            text_align = "center",
+                            separator = true
+                        }
+                    },
+                }
+            }
+        end
     }
+
 
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = function()
             require("plugins/lualine")
-        end
-    }
-
-    use {
-        'max-0406/autoclose.nvim',
-        config = function()
-            require("autoclose").setup()
         end
     }
 
@@ -280,10 +328,7 @@ use {
 }
 
 use {
-    "kdheepak/lazygit.nvim",
-    config = function()
-        require("lazygit").setup()
-    end
+    "kdheepak/lazygit.nvim"
 }
 
 use({

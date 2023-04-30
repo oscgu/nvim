@@ -34,3 +34,6 @@ map('', '<TAB>', ":Neotree toggle<CR>", opts)
 -- Gitsigns
 map('n', "gb", "<Cmd>:Gitsigns blame_line<CR>", opts)
 map('n', "gd", "<Cmd>:Gitsigns diffthis<CR>", opts)
+
+-- CodeActionMenu
+map('n', "cam", "<Cmd>:CodeActionMenu<CR>", opts)
