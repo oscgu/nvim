@@ -19,7 +19,7 @@ opt.tabstop = 4
 opt.splitright = true
 opt.splitbelow = true
 
-vim.g.mapleader = ","
+vim.g.mapleader = "<Space>"
 vim.g.localleader = "\\"
 vim.g.material_style = "darker"
 vim.g.hidden = true

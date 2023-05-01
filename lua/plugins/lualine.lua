@@ -3,12 +3,6 @@ require('lualine').setup {
         icons_enabled = true,
         theme = 'ayu_mirage',
         component_separators = { left = '|', right = '|'},
-        section_separators = {},
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-        },
-        ignore_focus = {},
         always_divide_middle = true,
         globalstatus = false,
         refresh = {
@@ -21,7 +15,7 @@ require('lualine').setup {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_x = { require('lsp-progress').progress,'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },
@@ -33,8 +27,4 @@ require('lualine').setup {
         lualine_y = {ctx},
         lualine_z = {}
     },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {}
 }

@@ -26,3 +26,11 @@ autocmd!
 autocmd BufRead,BufNewFile *.h set filetype=c
 augroup END
 ]])
+
+-- Lightbulb
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
+
+-- Neotree
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+
