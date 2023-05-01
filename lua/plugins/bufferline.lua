@@ -11,10 +11,12 @@ require("bufferline").setup{
         },
         always_show_bufferline = true,
         offsets = {
-            filetype = "neo-tree",
-            text = "Tree",
-            text_align = "center",
-            separator = true
+            {
+                filetype = "neo-tree",
+                text = "Tree",
+                text_align = "center",
+                separator = true
+            }
         },
         diagnostics_indicator = function(count, level)
             local icon = level:match("error") and " " or ""
