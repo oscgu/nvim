@@ -1,6 +1,6 @@
 require('toggleterm').setup {
-    size=100,
+    size=20,
     open_mapping = [[<A-T>]],
-    direction = 'vertical'
+    direction = 'horizontal'
 }
 

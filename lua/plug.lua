@@ -1,4 +1,19 @@
 return require('packer').startup(function(use)
+
+    use {
+        'towolf/vim-helm'
+    }
+
+    use {
+        "jbyuki/venn.nvim"
+    }
+
+    use {
+      'akinsho/git-conflict.nvim', tag = "*", config = function()
+      require('git-conflict').setup()
+    end
+    }
+
     use {
         'kosayoda/nvim-lightbulb',
         requires = 'antoinemadec/FixCursorHold.nvim',
