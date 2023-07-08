@@ -55,3 +55,30 @@ function _G.Toggle_venn()
 end
 -- toggle keymappings for venn using <leader>v
 vim.api.nvim_set_keymap('n', '<leader>v', ":lua Toggle_venn()<CR>", { noremap = true})
+
+--- Ansible Lint
+local function is_ansible_project()
+    local current_path = vim.fn.expand('%:p:h')
+    while current_path ~= '/' do
+        if vim.fn.isdirectory(current_path .. '/inventories') == 1 then
+            return true
+        end
+        current_path = vim.fn.fnamemodify(current_path, ':h')
+    end
+    return false
+end
+
+local function set_ansible_filetype()
+    if is_ansible_project() then
+        vim.cmd('set filetype=yaml.ansible')
+    end
+end
+
+_G.set_ansible_filetype = set_ansible_filetype
+
+vim.cmd([[
+augroup ansible_project
+autocmd!
+autocmd BufRead,BufNewFile *.yml lua set_ansible_filetype()
+augroup END
+]])

@@ -36,13 +36,15 @@ require('lspconfig')["jsonls"].setup {
 require('lspconfig')["bashls"].setup{
     capabilities = capabilities,
     settings = {
-        linting = {
-            shellcheck =  {
-                enable = true,
-                command = "shellcheck"
-            }
+        shellcheck =  {
+            enable = true,
+            command = "shellcheck"
         }
     }
+}
+
+require('lspconfig')["ansiblels"].setup{
+    capabilities = capabilities
 }
 
 require('lspconfig')["helm_ls"].setup{

@@ -1,17 +1,13 @@
 return require('packer').startup(function(use)
 
-    use {
-        'towolf/vim-helm'
-    }
+    use 'towolf/vim-helm'
 
-    use {
-        "jbyuki/venn.nvim"
-    }
+    use "jbyuki/venn.nvim"
 
     use {
       'akinsho/git-conflict.nvim', tag = "*", config = function()
-      require('git-conflict').setup()
-    end
+        require('git-conflict').setup()
+      end
     }
 
     use {
@@ -164,7 +160,6 @@ return require('packer').startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-neotest/neotest-go",
-        -- Your other test adapters here
       },
       config = function()
           require("plugins/neotest")

@@ -11,7 +11,7 @@ map('n', '<Leader>fg', '<Cmd>:Telescope live_grep<CR>', opts)
 map('n', '<Leader>fh', '<Cmd>:Telescope help_tags<CR>', opts)
 
 -- Format file
-map('n', '=G', '<Cmd>:lua vim.lsp.buf.formatting_sync(nil, 20000)<CR>', opts)
+map('n', '=G', '<Cmd>:lua vim.lsp.buf.format()<CR>', opts)
 
 -- Neotree
 map('', '<TAB>', ":Neotree toggle<CR>", opts)
@@ -36,8 +36,10 @@ map("n", "<Leader>df", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 map("n", "<Leader>rf", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
 
 -- Cmp
-map("n", "<Leader>gn", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-map("n", "<Leader>gp", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+map("n", "<Leader>gp", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+map("n", "<Leader>gn", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+map("n", "<Leader>of", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- Lazygit
 map("n", "<Leader>lg", "<Cmd>LazyGit<CR>", opts)
+
