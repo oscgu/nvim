@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
 
     use "jbyuki/venn.nvim"
 
+    use 'Bekaboo/deadcolumn.nvim'
+
     use {
       'akinsho/git-conflict.nvim', tag = "*", config = function()
         require('git-conflict').setup()
