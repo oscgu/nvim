@@ -26,7 +26,8 @@ require('lspconfig')["jsonnet_ls"].setup {
 }
 
 require('lspconfig')["omnisharp"].setup {
-    cmd = { "omnisharp" },
+    capabilities = capabilities,
+    cmd = { "omnisharp" }
 }
 
 require('lspconfig')["jsonls"].setup {
@@ -43,12 +44,16 @@ require('lspconfig')["bashls"].setup{
     }
 }
 
+require('lspconfig')["powershell_es"].setup{
+  bundle_path = '~/ps'
+}
+
 require('lspconfig')["ansiblels"].setup{
     capabilities = capabilities
 }
 
 require('lspconfig')["helm_ls"].setup{
-    capabilities = capabilities,
+    capabilities = capabilities
 }
 
 vim.api.nvim_create_autocmd('BufWritePre', {
