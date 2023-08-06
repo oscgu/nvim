@@ -4,5 +4,3 @@ g.background = "dark"
 g.mapleader = ","
 g.material_style = "darker"
 g.hidden = true
-
-

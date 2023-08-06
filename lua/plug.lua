@@ -1,4 +1,11 @@
 return require('packer').startup(function(use)
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2',
+        config = function()
+            require('hop').setup {}
+        end
+    }
 
     use 'towolf/vim-helm'
 
@@ -7,9 +14,9 @@ return require('packer').startup(function(use)
     use 'Bekaboo/deadcolumn.nvim'
 
     use {
-      'akinsho/git-conflict.nvim', tag = "*", config = function()
+        'akinsho/git-conflict.nvim', tag = "*", config = function()
         require('git-conflict').setup()
-      end
+    end
     }
 
     use {
@@ -20,7 +27,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use  {
+    use {
         "weilbith/nvim-code-action-menu",
         cmd = "CodeActionMenu",
     }
@@ -50,11 +57,10 @@ return require('packer').startup(function(use)
             require("plugins/lsp")
         end
     }
-    
 
     use {
         'hrsh7th/nvim-cmp',
-        config = function() 
+        config = function()
             require("plugins/cmp")
         end,
         requires = {
@@ -80,8 +86,8 @@ return require('packer').startup(function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 
-            'kyazdani42/nvim-web-devicons', 
+        requires = {
+            'kyazdani42/nvim-web-devicons',
             'linrongbin16/lsp-progress.nvim'
         },
         config = function()
@@ -97,32 +103,32 @@ return require('packer').startup(function(use)
     }
 
     use {
-      "nvim-neo-tree/neo-tree.nvim",
+        "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
-        requires = { 
-          "nvim-lua/plenary.nvim",
-          "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-          "MunifTanjim/nui.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
         },
-        config = function ()
+        config = function()
             require("plugins/neotree")
         end
     }
 
     use { 'nvim-treesitter/nvim-treesitter',
-    config = function()
+        config = function()
             require("plugins/treesitter")
         end
     }
 
-    use { 'nvim-lua/telescope.nvim', 
-        requires = {'nvim-lua/plenary.nvim'},
+    use { 'nvim-lua/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require("plugins/telescope")
         end,
     }
 
-    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+    use { "akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
         require("plugins/toggleterm")
     end
     }
@@ -135,37 +141,35 @@ return require('packer').startup(function(use)
     }
 
     use {
-      'pwntester/octo.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function ()
-          require("plugins/octo")
-      end
+        'pwntester/octo.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'kyazdani42/nvim-web-devicons',
+        },
+        config = function()
+            require("plugins/octo")
+        end
     }
 
     use {
-      'lewis6991/gitsigns.nvim',
-      config = function()
-          require("plugins/gitsigns")
-      end
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require("plugins/gitsigns")
+        end
     }
 
-    use "kdheepak/lazygit.nvim"
-
     use({
-      "nvim-neotest/neotest",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim",
-        "nvim-neotest/neotest-go",
-      },
-      config = function()
-          require("plugins/neotest")
-      end,
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-neotest/neotest-go",
+        },
+        config = function()
+            require("plugins/neotest")
+        end,
     })
 
     use {

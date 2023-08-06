@@ -23,4 +23,3 @@ vim.g.mapleader = "<Space>"
 vim.g.localleader = "\\"
 vim.g.material_style = "darker"
 vim.g.hidden = true
-

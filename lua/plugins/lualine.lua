@@ -2,7 +2,7 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'ayu_mirage',
-        component_separators = { left = '|', right = '|'},
+        component_separators = { left = '|', right = '|' },
         always_divide_middle = true,
         globalstatus = false,
         refresh = {
@@ -12,19 +12,19 @@ require('lualine').setup {
         }
     },
     sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = { require('lsp-progress').progress,'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { 'filename' },
+        lualine_x = { require('lsp-progress').progress, 'encoding', 'fileformat' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' }
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
-        lualine_y = {ctx},
+        lualine_c = { 'filename' },
+        lualine_x = { 'location' },
+        lualine_y = {},
         lualine_z = {}
     },
 }

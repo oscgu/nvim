@@ -1,12 +1,16 @@
-require("bufferline").setup{
+require("bufferline").setup {
     options = {
         diagnostics = "nvim_lsp",
-        separator_style = "slope",
+        separator_style = "slant",
+        mode = "tabs",
+        indicator = {
+            icon = '▎',
+        },
         hover = {
             {
                 enabled = true,
                 delay = 200,
-                reveal= {'close'}
+                reveal = { 'close' }
             }
         },
         always_show_bufferline = true,
