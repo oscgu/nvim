@@ -1,8 +1,9 @@
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'ayu_mirage',
+        theme = 'iceberg_dark',
         component_separators = { left = '|', right = '|' },
+        section_separators = '',
         always_divide_middle = true,
         globalstatus = false,
         refresh = {
