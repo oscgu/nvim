@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     use {
         "roobert/action-hints.nvim",
         config = function()
-            require("action-hints").setup()
+            require("plugins/action-hints").setup()
         end
     }
 
