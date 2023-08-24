@@ -1,4 +1,53 @@
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+
 return require('packer').startup(function(use)
+    use {
+        "9seconds/repolink.nvim",
+        config = function()
+            require("repolink").setup()
+        end
+    }
+
+    use {
+        "roobert/action-hints.nvim",
+        config = function()
+            require("action-hints").setup()
+        end
+    }
+
+    use {
+        'tamton-aquib/zone.nvim',
+        config = function()
+            require("plugins/zone").setup()
+        end
+    }
+
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = { "mfussenegger/nvim-dap" },
+    }
+
+    use {
+        "folke/neodev.nvim",
+        config = function()
+            require('neodev').setup({
+                library = { plugins = { "nvim-dap-ui" }, types = true }
+            })
+        end
+    }
+
     use {
         'phaazon/hop.nvim',
         branch = 'v2',
@@ -179,4 +228,8 @@ return require('packer').startup(function(use)
             require("plugins/trouble")
         end
     }
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
