@@ -1,5 +1,3 @@
-vim.cmd 'colorscheme oxocarbon'
-
 vim.cmd([[ command! NeotestFile lua require("neotest").run.run(vim.fn.expand("%")) ]])
 vim.cmd([[ command! NeotestSummary lua require("neotest").summary.toggle() ]])
 vim.cmd([[ command! Neotest lua require("neotest").run.run(vim.fn.getcwd()) ]])
