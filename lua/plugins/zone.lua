@@ -1,4 +1,4 @@
 require("zone").setup {
-    style = "epilepsy",
+    style = "dvd",
     after = 180
 }

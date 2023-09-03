@@ -9,6 +9,7 @@ map('n', '<Leader>bp', '<Cmd>:BufferLineCyclePrev<CR>', opts)
 map('n', '<Leader>ff', '<Cmd>:Telescope find_files<CR>', opts)
 map('n', '<Leader>lg', '<Cmd>:Telescope live_grep<CR>', opts)
 map('n', '<Leader>ht', '<Cmd>:Telescope help_tags<CR>', opts)
+map('n', '<Leader>fb', '<Cmd>:Telescope buffers<CR>', opts)
 
 -- Format file
 map('n', '=G', '<Cmd>:lua vim.lsp.buf.format()<CR>', opts)
