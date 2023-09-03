@@ -23,14 +23,14 @@ return require('packer').startup(function(use)
     use {
         "roobert/action-hints.nvim",
         config = function()
-            require("plugins/action-hints").setup()
+            require("plugins/action-hints")
         end
     }
 
     use {
         'tamton-aquib/zone.nvim',
         config = function()
-            require("plugins/zone").setup()
+            require("plugins/zone")
         end
     }
 

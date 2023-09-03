@@ -33,7 +33,9 @@ map('n', "ct", "<Cmd>:ColorizerToggle<CR>", opts)
 map("n", "<Leader>ho", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "<Leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
 map("n", "<Leader>df", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-map("n", "<Leader>rf", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+map("n", "<Leader>rr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+map("n", "<Leader>sh", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+map("n", "<Leader>gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 
 -- Cmp
 map("n", "<Leader>gp", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)

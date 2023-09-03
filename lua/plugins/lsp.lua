@@ -25,7 +25,10 @@ require('lspconfig')["jsonnet_ls"].setup {
 
 require('lspconfig')["omnisharp"].setup {
     capabilities = capabilities,
-    cmd = { "omnisharp" }
+    cmd = { "omnisharp" },
+    enable_roslyn_analyzers = true,
+    organize_imports_on_format = true,
+    enable_import_completion = true
 }
 
 require('lspconfig')["jsonls"].setup {
@@ -66,29 +69,13 @@ require('lspconfig')["helm_ls"].setup {
     capabilities = capabilities
 }
 
+require('lspconfig')["pylsp"].setup{
+    capabilities = capabilities
+}
+
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.go',
     callback = function()
         vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
     end
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local function toSnakeCase(str)
-            return string.gsub(str, "%s*[- ]%s*", "_")
-        end
-
-        if client.name == 'omnisharp' then
-            local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-            for i, v in ipairs(tokenModifiers) do
-                tokenModifiers[i] = toSnakeCase(v)
-            end
-            local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-            for i, v in ipairs(tokenTypes) do
-                tokenTypes[i] = toSnakeCase(v)
-            end
-        end
-    end,
 })
