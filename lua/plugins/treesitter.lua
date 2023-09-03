@@ -1,6 +1,17 @@
 require('nvim-treesitter.configs').setup {
-    auto_install = true,
     highlight = {
-        enable = true
+        enabled = true,
+        disable = {
+            "go",
+            "c",
+            "solidity",
+            "typescript",
+            "jsonnet",
+            "csharp",
+            "json",
+            "lua",
+            "bash",
+            "python"
+        }
     }
 }

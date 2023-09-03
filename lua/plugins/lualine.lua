@@ -25,7 +25,15 @@ require('lualine').setup {
         lualine_b = {},
         lualine_c = { 'filename' },
         lualine_x = { 'location' },
-        lualine_y = {},
+        lualine_y = {
+            {
+                require("lazy.status").updates,
+                cond = require("lazy.status").has_updates,
+                color = {
+                    fg = "#ff9e64"
+                }
+            }
+        },
         lualine_z = {}
     },
 }

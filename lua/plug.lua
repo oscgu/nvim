@@ -1,5 +1,14 @@
 return {
     {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+    },
+
+    {
         "NeogitOrg/neogit",
         dependencies = {
             "nvim-lua/plenary.nvim",         -- required
@@ -45,15 +54,8 @@ return {
         end
     },
 
-    {
-        'phaazon/hop.nvim',
-        branch = 'v2',
-        config = function()
-            require('hop').setup {}
-        end
-    },
-
     'towolf/vim-helm',
+
     "jbyuki/venn.nvim",
 
     'Bekaboo/deadcolumn.nvim',
@@ -157,7 +159,7 @@ return {
 
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
+        branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             'kyazdani42/nvim-web-devicons',

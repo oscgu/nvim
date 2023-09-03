@@ -25,7 +25,7 @@ require("neo-tree").setup({
         icon = {
             folder_closed = "",
             folder_open = "",
-            folder_empty = "ﰊ",
+            folder_empty = "󰜌",
             -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
             -- then these will never be used.
             default = "*",
@@ -43,14 +43,14 @@ require("neo-tree").setup({
         git_status = {
             symbols = {
                 -- Change type
-                added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
                 deleted   = "✖", -- this can only be used in the git_status source
-                renamed   = "", -- this can only be used in the git_status source
+                renamed   = "󰁕", -- this can only be used in the git_status source
                 -- Status type
                 untracked = "",
                 ignored   = "",
-                unstaged  = "",
+                unstaged  = "󰄱",
                 staged    = "",
                 conflict  = "",
             }
@@ -106,7 +106,9 @@ require("neo-tree").setup({
             hide_dotfiles = false,
             hide_gitignored = false,
         },
-        follow_current_file = true,       -- This will find and focus the file in the active buffer every
+        follow_current_file = {
+            enabled = true
+        },       -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         hijack_netrw_behavior = "disabled", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
@@ -132,10 +134,14 @@ require("neo-tree").setup({
         }
     },
     buffers = {
-        follow_current_file = true, -- This will find and focus the file in the active buffer every
+        follow_current_file = {
+            enabled = true
+        }, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = true,  -- when true, empty folders will be grouped together
         show_unloaded = true,
+        position = "left",
+        width = 40,
         window = {
             mappings = {
                 ["bd"] = "buffer_delete",
@@ -143,20 +149,6 @@ require("neo-tree").setup({
                 ["."] = "set_root",
             }
         },
-    },
-    git_status = {
-        window = {
-            position = "float",
-            mappings = {
-                ["A"]  = "git_add_all",
-                ["gu"] = "git_unstage_file",
-                ["ga"] = "git_add_file",
-                ["gr"] = "git_revert_file",
-                ["gc"] = "git_commit",
-                ["gp"] = "git_push",
-                ["gg"] = "git_commit_and_push",
-            }
-        }
     }
 })
 
@@ -168,4 +160,4 @@ vim.fn.sign_define("DiagnosticSignWarn",
 vim.fn.sign_define("DiagnosticSignInfo",
     { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
-    { text = "", texthl = "DiagnosticSignHint" })
+    { text = "󰌵", texthl = "DiagnosticSignHint" })
