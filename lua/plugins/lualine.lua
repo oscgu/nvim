@@ -14,10 +14,24 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = {
+            'branch',
+            'diff',
+            'diagnostics',
+        },
         lualine_c = { 'filename' },
-        lualine_x = { require('lsp-progress').progress, 'encoding', 'fileformat' },
-        lualine_y = { 'progress' },
+        lualine_x = {
+            require('lsp-progress').progress,
+            {
+                require("lazy.status").updates,
+                cond = require("lazy.status").has_updates,
+                color = {
+                    fg = "#ff9e64"
+                }
+            },
+            'encoding', 'fileformat'
+        },
+        lualine_y = {},
         lualine_z = { 'location' }
     },
     inactive_sections = {
@@ -25,15 +39,7 @@ require('lualine').setup {
         lualine_b = {},
         lualine_c = { 'filename' },
         lualine_x = { 'location' },
-        lualine_y = {
-            {
-                require("lazy.status").updates,
-                cond = require("lazy.status").has_updates,
-                color = {
-                    fg = "#ff9e64"
-                }
-            }
-        },
+        lualine_y = {},
         lualine_z = {}
     },
 }
