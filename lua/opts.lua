@@ -1,5 +1,8 @@
 local opt = vim.opt
 
+opt.list = true
+opt.listchars:append "eol:↴"
+
 opt.colorcolumn = '80'
 opt.number = true
 opt.signcolumn = "yes"

@@ -1,13 +1,8 @@
-vim.cmd([[ command! NeotestFile lua require("neotest").run.run(vim.fn.expand("%")) ]])
-vim.cmd([[ command! NeotestSummary lua require("neotest").summary.toggle() ]])
-vim.cmd([[ command! Neotest lua require("neotest").run.run(vim.fn.getcwd()) ]])
-
 -- Lightbulb
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
 
 -- Neotree
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 
 --- Ansible Lint
 local function is_ansible_project()
@@ -35,3 +30,22 @@ autocmd!
 autocmd BufRead,BufNewFile *.yml lua set_ansible_filetype()
 augroup END
 ]])
+
+local user_cmd = vim.api.nvim_create_user_command
+
+--Peek
+user_cmd('PeekOpen', require('peek').open, {})
+user_cmd('PeekClose', require('peek').close, {})
+
+--Neotest
+user_cmd('NeotestFile', function()
+    require('neotest').run(vim.fn.expand("%"))
+end, {})
+
+user_cmd('NeotestSummary', function()
+    require('neotest').summary.toggle()
+end, {})
+
+user_cmd('Neotest', function()
+    require('neotest').run(vim.fn.getcwd())
+end, {})

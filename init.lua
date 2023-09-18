@@ -17,6 +17,16 @@ require("lazy").setup("plug", {
     checker = {
         enabled = true,
         notify = false
+    },
+    rtp = {
+        disabled_plugins = {
+            "gzip",
+            "rplugin",
+            "tarplugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin"
+        }
     }
 })
 

@@ -1,3 +1,30 @@
+require("mason").setup()
+
+require("mason-lspconfig").setup{
+    ensure_installed = {
+        "gopls",
+        "clangd",
+        "solc",
+        "tsserver",
+        "jsonnet_ls",
+        "omnisharp",
+        "jsonls",
+        "lua_ls",
+        "bashls",
+        "yamlls",
+        "powershell_es",
+        "ansiblels",
+        "helm_ls",
+        "pyright",
+        "dockerls",
+        "gradle_ls",
+        "graphql",
+        "marksman",
+        "taplo",
+        "lemminx"
+    }
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -8,7 +35,6 @@ require('lspconfig')['gopls'].setup {
 
 require('lspconfig')['clangd'].setup {
     capabilities = capabilities,
-    filetypes = { "c" }
 }
 
 require('lspconfig')['solc'].setup {
@@ -33,7 +59,15 @@ require('lspconfig')["omnisharp"].setup {
 
 require('lspconfig')["jsonls"].setup {
     capabilities = capabilities,
-    cmd = { "vscode-json-languageserver", "--stdio" }
+    cmd = { "vscode-json-languageserver", "--stdio" },
+    settings = {
+	json = {
+	    schemas = require("schemastore").json.schemas(),
+	    validate = {
+		    enabled = true
+	    },
+	},
+    },
 }
 
 require('lspconfig')["lua_ls"].setup {
@@ -57,6 +91,18 @@ require('lspconfig')["bashls"].setup {
     }
 }
 
+require('lspconfig')["yamlls"].setup {
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = "",
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+  },
+}
+
 require('lspconfig')["powershell_es"].setup {
     bundle_path = '~/ps'
 }
@@ -69,7 +115,7 @@ require('lspconfig')["helm_ls"].setup {
     capabilities = capabilities
 }
 
-require('lspconfig')["pylsp"].setup{
+require('lspconfig')["pyright"].setup{
     capabilities = capabilities
 }
 
