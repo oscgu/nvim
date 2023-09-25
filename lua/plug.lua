@@ -1,5 +1,9 @@
 return {
     {
+        'windwp/nvim-ts-autotag'
+    },
+
+    {
         'mfussenegger/nvim-lint',
         config = function ()
             require("plugins/lint")

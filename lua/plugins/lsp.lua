@@ -119,6 +119,10 @@ require('lspconfig')["pyright"].setup{
     capabilities = capabilities
 }
 
+require'lspconfig'.graphql.setup{
+    capabilities = capabilities
+}
+
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.go',
     callback = function()
