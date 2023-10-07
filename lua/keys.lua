@@ -2,8 +2,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Bufferline
-map("n", "<Leader>bn", "<Cmd>:BufferLineCycleNext<CR>", opts)
-map("n", "<Leader>bp", "<Cmd>:BufferLineCyclePrev<CR>", opts)
+map("n", "<Leader>bn", "<Cmd>:BufferLineCycleNext<CR>", opts) map("n", "<Leader>bp", "<Cmd>:BufferLineCyclePrev<CR>", opts)
 
 -- Telescope
 map("n", "<Leader>ff", "<Cmd>:Telescope find_files<CR>", opts)
@@ -56,3 +55,6 @@ vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 -- Formatter
 map("n", "<Leader>F", "<Cmd>Format<CR>", opts)
+
+-- Linter
+map("n", "<Leader>L", "<Cmd>Lint<CR>", opts)

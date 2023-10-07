@@ -49,3 +49,8 @@ end, {})
 user_cmd("Neotest", function()
     require("neotest").run(vim.fn.getcwd())
 end, {})
+
+--Linter
+user_cmd("Lint", function()
+    require("lint").try_lint()
+end, {})
