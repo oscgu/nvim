@@ -1,5 +1,11 @@
 return {
     {
+        "p00f/clangd_extensions.nvim",
+        config = function()
+            require("plugins/clangd-extensions")
+        end
+    },
+    {
         "barrett-ruth/import-cost.nvim",
         build = "sh install.sh yarn",
         config = true,
@@ -149,7 +155,7 @@ return {
             "GitConflictListQF",
         },
         config = function()
-            require("git-conflict").setup({})
+            require("plugins/git-conflict")
         end,
     },
 

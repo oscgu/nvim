@@ -58,3 +58,4 @@ map("n", "<Leader>F", "<Cmd>Format<CR>", opts)
 
 -- Linter
 map("n", "<Leader>L", "<Cmd>Lint<CR>", opts)
+map("n", "=G", "<Cmd>Format<CR>", opts)

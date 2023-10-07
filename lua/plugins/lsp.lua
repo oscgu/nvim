@@ -41,6 +41,13 @@ for _, lsp in ipairs(basic_lsps) do
     })
 end
 
+require("lspconfig")["clangd"].setup({
+    on_attach = function(client, bufnr)
+        require("clangd_extensions.inlay_hints").setup_autocmd()
+        require("clangd_extensions.inlay_hints").set_inlay_hints()
+    end
+})
+
 require("lspconfig")["omnisharp"].setup({
     capabilities = capabilities,
     cmd = { "omnisharp" },
@@ -94,3 +101,5 @@ require("lspconfig")["yamlls"].setup({
         },
     },
 })
+
+
