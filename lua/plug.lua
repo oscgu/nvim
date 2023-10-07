@@ -1,20 +1,26 @@
 return {
     {
-        'windwp/nvim-ts-autotag'
+        "barrett-ruth/import-cost.nvim",
+        build = "sh install.sh yarn",
+        config = true,
     },
 
     {
-        'mfussenegger/nvim-lint',
-        config = function ()
+        "windwp/nvim-ts-autotag",
+    },
+
+    {
+        "mfussenegger/nvim-lint",
+        config = function()
             require("plugins/lint")
-        end
+        end,
     },
 
     {
-        'mhartington/formatter.nvim',
-        config = function ()
+        "mhartington/formatter.nvim",
+        config = function()
             require("plugins/formatter")
-        end
+        end,
     },
 
     {
@@ -24,7 +30,7 @@ return {
         },
         config = function()
             require("mason").setup()
-        end
+        end,
     },
 
     {
@@ -35,13 +41,13 @@ return {
     },
 
     {
-        'linrongbin16/lsp-progress.nvim',
+        "linrongbin16/lsp-progress.nvim",
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            "kyazdani42/nvim-web-devicons",
         },
         config = function()
-            require('lsp-progress').setup()
-        end
+            require("lsp-progress").setup()
+        end,
     },
 
     {
@@ -49,19 +55,19 @@ return {
         event = "BufRead",
         config = function()
             require("plugins/incline")
-        end
+        end,
     },
 
     {
-        'Wansmer/treesj',
+        "Wansmer/treesj",
         keys = {
-            { '<leader>j', "<cmd>TSJToggle<cr>" },
+            { "<leader>j", "<cmd>TSJToggle<cr>" },
         },
         dependencies = {
-            'nvim-treesitter/nvim-treesitter',
+            "nvim-treesitter/nvim-treesitter",
         },
         config = function()
-            require('treesj').setup()
+            require("treesj").setup()
         end,
     },
 
@@ -75,21 +81,22 @@ return {
     },
 
     {
-        'Saimo/peek.nvim',
-        build = 'deno task --quiet build:fast',
+        "Saimo/peek.nvim",
+        build = "deno task --quiet build:fast",
         cmd = "PeekOpen",
         ft = {
             "markdown",
             "md",
-        }
+        },
     },
 
     {
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
+        main = "ibl",
         config = function()
             require("plugins/blankline")
-        end
+        end,
     },
 
     {
@@ -105,12 +112,12 @@ return {
             "Neogit",
         },
         dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
+            "nvim-lua/plenary.nvim", -- required
             "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim",        -- optional
-            "ibhagwan/fzf-lua",              -- optional
+            "sindrets/diffview.nvim", -- optional
+            "ibhagwan/fzf-lua", -- optional
         },
-        config = true
+        config = true,
     },
 
     {
@@ -120,11 +127,11 @@ return {
         },
         config = function()
             require("repolink").setup()
-        end
+        end,
     },
 
     {
-        'towolf/vim-helm',
+        "towolf/vim-helm",
         ft = {
             "yml",
             "yaml",
@@ -132,27 +139,27 @@ return {
     },
 
     {
-        'Bekaboo/deadcolumn.nvim',
+        "Bekaboo/deadcolumn.nvim",
         event = "BufRead",
     },
 
     {
-        'akinsho/git-conflict.nvim',
+        "akinsho/git-conflict.nvim",
         cmd = {
             "GitConflictListQF",
         },
         config = function()
-            require('git-conflict').setup {}
+            require("git-conflict").setup({})
         end,
     },
 
     {
-        'kosayoda/nvim-lightbulb',
+        "kosayoda/nvim-lightbulb",
         event = "BufRead",
-        dependencies = 'antoinemadec/FixCursorHold.nvim',
+        dependencies = "antoinemadec/FixCursorHold.nvim",
         config = function()
             require("plugins/lightbulb")
-        end
+        end,
     },
 
     {
@@ -168,64 +175,63 @@ return {
         event = "InsertEnter",
         config = function()
             require("plugins/autopairs")
-        end
+        end,
     },
 
     {
-        'cuducos/yaml.nvim',
+        "cuducos/yaml.nvim",
         ft = {
             "yaml",
             "yml",
         },
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim"
-        }
+            "nvim-telescope/telescope.nvim",
+        },
     },
 
     {
-        'nyoom-engineering/oxocarbon.nvim',
+        "nyoom-engineering/oxocarbon.nvim",
         lazy = false,
         priority = 1000,
         config = function()
             vim.cmd([[colorscheme oxocarbon]])
-        end
+        end,
     },
 
     {
-        'neovim/nvim-lspconfig',
+        "neovim/nvim-lspconfig",
         event = "BufReadPre",
         config = function()
             require("plugins/lsp")
-        end
+        end,
     },
 
     {
-        'hrsh7th/nvim-cmp',
+        "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         config = function()
             require("plugins/cmp")
         end,
         dependencies = {
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-nvim-lsp-signature-help'
-        }
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+        },
     },
 
-
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
-            'linrongbin16/lsp-progress.nvim'
+            "kyazdani42/nvim-web-devicons",
+            "linrongbin16/lsp-progress.nvim",
         },
         config = function()
             require("plugins/lualine")
-        end
+        end,
     },
 
     {
@@ -234,26 +240,26 @@ return {
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            'kyazdani42/nvim-web-devicons',
+            "kyazdani42/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
         config = function()
             require("plugins/neotree")
-        end
+        end,
     },
 
     {
-        'nvim-treesitter/nvim-treesitter',
+        "nvim-treesitter/nvim-treesitter",
         event = "BufRead",
         config = function()
             require("plugins/treesitter")
-        end
+        end,
     },
 
     {
-        'nvim-telescope/telescope.nvim',
+        "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("plugins/telescope")
         end,
@@ -262,26 +268,26 @@ return {
     {
         "akinsho/toggleterm.nvim",
         cmd = "ToggleTerm",
-        version = '*',
+        version = "*",
         config = function()
             require("plugins/toggleterm")
-        end
+        end,
     },
 
     {
-        'norcalli/nvim-colorizer.lua',
+        "norcalli/nvim-colorizer.lua",
         cmd = "ColorizerToggle",
         config = function()
             require("plugins/colorizer")
-        end
+        end,
     },
 
     {
-        'lewis6991/gitsigns.nvim',
+        "lewis6991/gitsigns.nvim",
         event = "BufRead",
         config = function()
             require("plugins/gitsigns")
-        end
+        end,
     },
 
     {
@@ -301,9 +307,9 @@ return {
     {
         "folke/trouble.nvim",
         cmd = "TroubleToggle",
-        dependencies = 'kyazdani42/nvim-web-devicons',
+        dependencies = "kyazdani42/nvim-web-devicons",
         config = function()
             require("plugins/trouble")
-        end
-    }
+        end,
+    },
 }

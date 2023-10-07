@@ -1,4 +1,4 @@
-require('vars');
+require("vars")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plug", {
     checker = {
         enabled = true,
-        notify = false
+        notify = false,
     },
     rtp = {
         disabled_plugins = {
@@ -25,11 +25,11 @@ require("lazy").setup("plug", {
             "tarplugin",
             "tohtml",
             "tutor",
-            "zipPlugin"
-        }
-    }
+            "zipPlugin",
+        },
+    },
 })
 
-require('opts');
-require('keys');
-require('cmd');
+require("opts")
+require("keys")
+require("cmd")

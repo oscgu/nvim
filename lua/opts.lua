@@ -1,14 +1,14 @@
 local opt = vim.opt
 
 opt.list = true
-opt.listchars:append "eol:↴"
+opt.listchars:append("eol:↴")
 
-opt.colorcolumn = '80'
+opt.colorcolumn = "80"
 opt.number = true
 opt.signcolumn = "yes"
 
-opt.encoding = 'utf8'
-opt.fileencoding = 'utf8'
+opt.encoding = "utf8"
+opt.fileencoding = "utf8"
 opt.syntax = "ON"
 opt.termguicolors = true
 
