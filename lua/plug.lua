@@ -1,18 +1,31 @@
 return {
     {
         "p00f/clangd_extensions.nvim",
+        ft = { "c", "h", "cpp", "hpp" },
         config = function()
             require("plugins/clangd-extensions")
-        end
+        end,
     },
+
     {
         "barrett-ruth/import-cost.nvim",
+        ft = {
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+        },
         build = "sh install.sh yarn",
         config = true,
     },
 
     {
         "windwp/nvim-ts-autotag",
+        ft = {
+            "tsx",
+            "jsx",
+            "html",
+        },
     },
 
     {
