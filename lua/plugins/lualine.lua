@@ -15,11 +15,14 @@ require("lualine").setup({
     sections = {
         lualine_a = { "mode" },
         lualine_b = {
-            "branch",
+            {
+                "branch",
+                icon = '',
+                color = { bg = '#161821', fg ='#6b7089', gui = 'bold'}
+            }
         },
-        lualine_c = { "filename" },
+        lualine_c = { { "filename", path = 1} },
         lualine_x = {
-            require("lsp-progress").progress,
             {
                 require("lazy.status").updates,
                 cond = require("lazy.status").has_updates,
@@ -36,7 +39,7 @@ require("lualine").setup({
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
+        lualine_c = { {"filename", path = 1} },
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},

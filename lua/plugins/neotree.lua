@@ -43,9 +43,9 @@ require("neo-tree").setup({
         git_status = {
             symbols = {
                 -- Change type
-                added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                deleted = "✖", -- this can only be used in the git_status source
+                added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                deleted = "", -- this can only be used in the git_status source
                 renamed = "󰁕", -- this can only be used in the git_status source
                 -- Status type
                 untracked = "",
@@ -155,7 +155,7 @@ require("neo-tree").setup({
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
 vim.fn.sign_define(
     "DiagnosticSignError",
-    { text = " ", texthl = "DiagnosticSignError" }
+    { text = " ", texthl = "DiagnosticSignError" }
 )
 vim.fn.sign_define(
     "DiagnosticSignWarn",

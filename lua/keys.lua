@@ -13,9 +13,6 @@ map("n", "<Leader>fb", "<Cmd>:Telescope buffers<CR>", opts)
 -- Neotree
 map("", "<TAB>", ":Neotree toggle<CR>", opts)
 
--- Gitsigns
-map("n", "gb", "<Cmd>:Gitsigns blame_line<CR>", opts)
-
 -- CodeActionMenu
 map("n", "cam", "<Cmd>:CodeActionMenu<CR>", opts)
 

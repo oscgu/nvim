@@ -22,6 +22,7 @@ cmp.setup({
         { name = "vsnip" }, -- For vsnip users.
         { name = "nvim_lsp_signature_help" },
         { name = "path" },
+        { name = "calc" },
     }, {
         { name = "buffer" },
     }),
@@ -35,8 +36,8 @@ cmp.setup({
             cmp.config.compare.sort_text,
             cmp.config.compare.length,
             cmp.config.compare.order,
-        }
-    }
+        },
+    },
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -55,4 +56,25 @@ cmp.setup.cmdline(":", {
     }, {
         { name = "cmdline" },
     }),
+})
+
+cmp.setup({
+    formatting = {
+        format = function(entry, vim_item)
+            if vim.tbl_contains({ "path" }, entry.source.name) then
+                local icon, hl_group = require("nvim-web-devicons").get_icon(
+                    entry:get_completion_item().label
+                )
+                if icon then
+                    vim_item.kind = icon
+                    vim_item.kind_hl_group = hl_group
+                    return vim_item
+                end
+            end
+            return require("lspkind").cmp_format({ with_text = true })(
+                entry,
+                vim_item
+            )
+        end,
+    },
 })

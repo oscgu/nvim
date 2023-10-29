@@ -1,5 +1,25 @@
 return {
     {
+        "onsails/lspkind.nvim",
+    },
+
+    {
+        "j-hui/fidget.nvim",
+        tag = "legacy",
+        event = "LspAttach",
+        config = function()
+            require("plugins/fidget")
+        end,
+    },
+
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("plugins/gitsigns")
+        end,
+    },
+
+    {
         "ray-x/go.nvim",
         config = function()
             require("go").setup()
@@ -66,16 +86,6 @@ return {
         "folke/neodev.nvim",
         config = function()
             require("neodev").setup()
-        end,
-    },
-
-    {
-        "linrongbin16/lsp-progress.nvim",
-        dependencies = {
-            "kyazdani42/nvim-web-devicons",
-        },
-        config = function()
-            require("lsp-progress").setup()
         end,
     },
 
@@ -249,6 +259,7 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-calc",
         },
     },
 
@@ -308,14 +319,6 @@ return {
         cmd = "ColorizerToggle",
         config = function()
             require("plugins/colorizer")
-        end,
-    },
-
-    {
-        "lewis6991/gitsigns.nvim",
-        event = "BufRead",
-        config = function()
-            require("plugins/gitsigns")
         end,
     },
 
