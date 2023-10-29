@@ -34,17 +34,19 @@ local user_cmd = vim.api.nvim_create_user_command
 user_cmd("PeekOpen", require("peek").open, {})
 user_cmd("PeekClose", require("peek").close, {})
 
+local neotest = require("neotest")
+
 --Neotest
 user_cmd("NeotestFile", function()
-    require("neotest").run(vim.fn.expand("%"))
+    neotest.run(vim.fn.expand("%"))
 end, {})
 
 user_cmd("NeotestSummary", function()
-    require("neotest").summary.toggle()
+    neotest.summary.toggle()
 end, {})
 
 user_cmd("Neotest", function()
-    require("neotest").run(vim.fn.getcwd())
+    neotest.run(vim.fn.getcwd())
 end, {})
 
 --Linter
