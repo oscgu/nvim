@@ -120,14 +120,14 @@ return {
     },
 
     {
-        "Saimo/peek.nvim",
-        build = "deno task --quiet build:fast",
-        cmd = "PeekOpen",
-        ft = {
-            "markdown",
-            "md",
-        },
-    },
+          "Saimo/peek.nvim",
+          build = "deno task --quiet build:fast",
+          cmd = "PeekOpen",
+          ft = {
+              "markdown",
+              "md",
+          },
+      },
 
     {
         "lukas-reineke/indent-blankline.nvim",

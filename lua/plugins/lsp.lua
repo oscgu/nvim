@@ -102,4 +102,6 @@ require("lspconfig")["yamlls"].setup({
     },
 })
 
-
+require("lspconfig")["tailwindcss"].setup{
+    capabilities = capabilities
+}

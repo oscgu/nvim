@@ -9,6 +9,9 @@ require("formatter").setup({
         ["c"] = {
             require("formatter.filetypes.c").clangformat,
         },
+        ["cpp"] = {
+            require("formatter.filetypes.c").clangformat,
+        },
         ["graphql"] = {
             require("formatter.filetypes.graphql").prettier,
         },
