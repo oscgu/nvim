@@ -16,6 +16,7 @@ local basic_lsps = {
     "lemminx",
     "dockerls",
     "gradle_ls",
+    "sqlls"
 }
 
 ---@diagnostic disable-next-line: deprecated
@@ -58,7 +59,6 @@ require("lspconfig")["omnisharp"].setup({
 
 require("lspconfig")["jsonls"].setup({
     capabilities = capabilities,
-    cmd = { "vscode-json-languageserver", "--stdio" },
     settings = {
         json = {
             schemas = require("schemastore").json.schemas(),
