@@ -60,6 +60,7 @@ return {
 
     {
         "mfussenegger/nvim-lint",
+        lazy = false,
         config = function()
             require("plugins/lint")
         end,
@@ -69,16 +70,6 @@ return {
         "mhartington/formatter.nvim",
         config = function()
             require("plugins/formatter")
-        end,
-    },
-
-    {
-        "williamboman/mason.nvim",
-        dependencies = {
-            "williamboman/mason-lspconfig.nvim",
-        },
-        config = function()
-            require("mason").setup()
         end,
     },
 
@@ -120,14 +111,14 @@ return {
     },
 
     {
-          "Saimo/peek.nvim",
-          build = "deno task --quiet build:fast",
-          cmd = "PeekOpen",
-          ft = {
-              "markdown",
-              "md",
-          },
-      },
+        "Saimo/peek.nvim",
+        build = "deno task --quiet build:fast",
+        cmd = "PeekOpen",
+        ft = {
+            "markdown",
+            "md",
+        },
+    },
 
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -229,12 +220,27 @@ return {
         },
     },
 
+    -- {
+    -- "nyoom-engineering/oxocarbon.nvim",
+    -- lazy = false,
+    -- priority = 1000,
+    -- config = function()
+    -- vim.cmd([[colorscheme oxocarbon]])
+    -- end,
+    -- },
     {
-        "nyoom-engineering/oxocarbon.nvim",
+        "scottmckendry/cyberdream.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd([[colorscheme oxocarbon]])
+            require("cyberdream").setup({
+                -- Recommended - see "Configuring" below for more config options
+                transparent = true,
+                italic_comments = true,
+                hide_fillchars = true,
+                borderless_telescope = true,
+            })
+            vim.cmd("colorscheme cyberdream") -- set the colorscheme
         end,
     },
 

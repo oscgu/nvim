@@ -1,5 +1,3 @@
-require("mason").setup()
-
 local basic_lsps = {
     "gopls",
     "clangd",
@@ -16,21 +14,8 @@ local basic_lsps = {
     "lemminx",
     "dockerls",
     "gradle_ls",
+    "tailwindcss"
 }
-
----@diagnostic disable-next-line: deprecated
-table.unpack = table.unpack or unpack
-
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "omnisharp",
-        "jsonls",
-        "lua_ls",
-        "bashls",
-        "yamlls",
-        table.unpack(basic_lsps),
-    },
-})
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -101,7 +86,3 @@ require("lspconfig")["yamlls"].setup({
         },
     },
 })
-
-require("lspconfig")["tailwindcss"].setup{
-    capabilities = capabilities
-}

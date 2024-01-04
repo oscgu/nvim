@@ -1,7 +1,9 @@
+local cyberdream = require("lualine.themes.cyberdream")
+
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "iceberg_dark",
+        theme = "cyberdream",
         component_separators = { left = "|", right = "|" },
         section_separators = "",
         always_divide_middle = true,
@@ -17,11 +19,11 @@ require("lualine").setup({
         lualine_b = {
             {
                 "branch",
-                icon = '',
-                color = { bg = '#161821', fg ='#6b7089', gui = 'bold'}
-            }
+                icon = "",
+                color = { bg = "#161821", fg = "#6b7089", gui = "bold" },
+            },
         },
-        lualine_c = { { "filename", path = 1} },
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = {
             {
                 require("lazy.status").updates,
@@ -39,7 +41,7 @@ require("lualine").setup({
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { {"filename", path = 1} },
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},

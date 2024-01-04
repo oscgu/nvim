@@ -1,6 +1,13 @@
 -- Neotree
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
+-- nvim lint
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
 --- Ansible Lint
 local function is_ansible_project()
     local current_path = vim.fn.expand("%:p:h")
