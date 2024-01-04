@@ -14,7 +14,7 @@ local basic_lsps = {
     "lemminx",
     "dockerls",
     "gradle_ls",
-    "tailwindcss"
+    "tailwindcss",
     "sqlls"
 }
 
