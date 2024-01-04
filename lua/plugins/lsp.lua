@@ -15,6 +15,7 @@ local basic_lsps = {
     "dockerls",
     "gradle_ls",
     "tailwindcss"
+    "sqlls"
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -43,7 +44,6 @@ require("lspconfig")["omnisharp"].setup({
 
 require("lspconfig")["jsonls"].setup({
     capabilities = capabilities,
-    cmd = { "vscode-json-languageserver", "--stdio" },
     settings = {
         json = {
             schemas = require("schemastore").json.schemas(),
