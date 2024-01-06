@@ -1,11 +1,15 @@
 return {
     {
+        "numToStr/Comment.nvim",
+        lazy = false,
+    },
+
+    {
         "onsails/lspkind.nvim",
     },
 
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
         event = "LspAttach",
         config = function()
             require("plugins/fidget")
@@ -263,6 +267,7 @@ return {
 
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         dependencies = {
             "kyazdani42/nvim-web-devicons",
             "linrongbin16/lsp-progress.nvim",

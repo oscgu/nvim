@@ -3,7 +3,7 @@ local cyberdream = require("lualine.themes.cyberdream")
 require("lualine").setup({
     options = {
         icons_enabled = true,
-        theme = "cyberdream",
+        theme = cyberdream,
         component_separators = { left = "|", right = "|" },
         section_separators = "",
         always_divide_middle = true,
@@ -45,5 +45,12 @@ require("lualine").setup({
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},
+    },
+    extensions = {
+        "lazy",
+        "neo-tree",
+        "toggleterm",
+        "trouble",
+        "nvim-dap-ui",
     },
 })

@@ -1,8 +1,10 @@
 require("fidget").setup {
-    text = {
-        spinner = "star"
-    },
-    display = {
-        done_ttl = 10
+    progress = {
+        display = {
+            progress_icon = {
+                pattern = "star",
+                period = 1
+            }
+        }
     }
 }

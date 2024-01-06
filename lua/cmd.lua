@@ -1,12 +1,7 @@
+local user_cmd = vim.api.nvim_create_user_command
+
 -- Neotree
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-
--- nvim lint
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
 
 --- Ansible Lint
 local function is_ansible_project()
@@ -35,15 +30,15 @@ autocmd BufRead,BufNewFile *.yml lua set_ansible_filetype()
 augroup END
 ]])
 
-local user_cmd = vim.api.nvim_create_user_command
 
 --Peek
 user_cmd("PeekOpen", require("peek").open, {})
 user_cmd("PeekClose", require("peek").close, {})
 
-local neotest = require("neotest")
 
 --Neotest
+local neotest = require("neotest")
+
 user_cmd("NeotestFile", function()
     neotest.run(vim.fn.expand("%"))
 end, {})
@@ -56,9 +51,17 @@ user_cmd("Neotest", function()
     neotest.run(vim.fn.getcwd())
 end, {})
 
---Linter
+-- Linter
+local linter = require("lint")
+
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
+  callback = function()
+    linter.try_lint()
+  end,
+})
+
 user_cmd("Lint", function()
-    require("lint").try_lint()
+    linter.try_lint()
 end, {})
 
 local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
