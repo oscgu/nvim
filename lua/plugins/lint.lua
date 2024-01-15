@@ -11,9 +11,6 @@ require("lint").linters_by_ft = {
     Dockerfile = {
         "hadolint"
     },
-    markdown = {
-        "markdownlint"
-    },
     typescript = {
         "eslint"
     },
