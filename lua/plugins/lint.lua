@@ -20,4 +20,7 @@ require("lint").linters_by_ft = {
     typescriptreact = {
         "eslint"
     },
+    python = {
+        "flake8"
+    }
 }

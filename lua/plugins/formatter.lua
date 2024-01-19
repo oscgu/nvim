@@ -39,5 +39,9 @@ require("formatter").setup({
         ["yaml"] = {
             require("formatter.filetypes.yaml").yamlfmt,
         },
+        ["python"] = {
+            require("formatter.filetypes.python").black,
+            require("formatter.filetypes.python").isort,
+        }
     },
 })
