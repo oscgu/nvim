@@ -15,7 +15,8 @@ local basic_lsps = {
     "dockerls",
     "gradle_ls",
     "tailwindcss",
-    "sqlls"
+    "sqlls",
+    "biome"
 }
 
 for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do

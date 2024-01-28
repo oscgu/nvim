@@ -72,6 +72,7 @@ return {
 
     {
         "mhartington/formatter.nvim",
+        cmd = "Format",
         config = function()
             require("plugins/formatter")
         end,
@@ -79,6 +80,9 @@ return {
 
     {
         "folke/neodev.nvim",
+        ft = {
+            "lua"
+        },
         config = function()
             require("neodev").setup()
         end,
