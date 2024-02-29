@@ -1,7 +1,8 @@
 local basic_lsps = {
     "gopls",
     "clangd",
-    "solc",
+    --"solc",
+    "solidity_ls_nomicfoundation",
     "tsserver",
     "jsonnet_ls",
     "powershell_es",

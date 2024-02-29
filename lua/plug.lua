@@ -9,17 +9,17 @@ return {
     },
 
     {
-        "j-hui/fidget.nvim",
-        event = "LspAttach",
+        "lewis6991/gitsigns.nvim",
         config = function()
-            require("plugins/fidget")
+            require("plugins/gitsigns")
         end,
     },
 
     {
-        "lewis6991/gitsigns.nvim",
+        "j-hui/fidget.nvim",
+        event = "LspAttach",
         config = function()
-            require("plugins/gitsigns")
+            require("plugins/fidget")
         end,
     },
 
@@ -39,18 +39,6 @@ return {
         config = function()
             require("plugins/clangd-extensions")
         end,
-    },
-
-    {
-        "barrett-ruth/import-cost.nvim",
-        ft = {
-            "ts",
-            "tsx",
-            "js",
-            "jsx",
-        },
-        build = "sh install.sh yarn",
-        config = true,
     },
 
     {
@@ -81,7 +69,7 @@ return {
     {
         "folke/neodev.nvim",
         ft = {
-            "lua"
+            "lua",
         },
         config = function()
             require("neodev").setup()
@@ -91,6 +79,9 @@ return {
     {
         "b0o/incline.nvim",
         event = "BufRead",
+        dependencies = {
+            "lewis6991/gitsigns.nvim"
+        },
         config = function()
             require("plugins/incline")
         end,
@@ -234,10 +225,9 @@ return {
         priority = 1000,
         config = function()
             require("cyberdream").setup({
-                -- Recommended - see "Configuring" below for more config options
-                transparent = true,
+                transparent = false,
                 italic_comments = true,
-                hide_fillchars = true,
+                hide_fillchars = false,
                 borderless_telescope = true,
             })
             vim.cmd("colorscheme cyberdream") -- set the colorscheme
