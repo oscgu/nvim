@@ -1,5 +1,41 @@
 return {
     {
+        "iamcco/markdown-preview.nvim",
+        cmd = {
+            "MarkdownPreviewToggle",
+            "MarkdownPreview",
+            "MarkdownPreviewStop",
+        },
+        ft = {
+            "markdown",
+            "md",
+        },
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+    },
+
+    {
+        "jakewvincent/mkdnflow.nvim",
+        config = function()
+            require("mkdnflow").setup({
+                mappings = {
+                    MkdnNextLink = false,
+                },
+            })
+        end,
+    },
+
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = function()
+            require("plugins/dap")
+            require("dapui").setup()
+        end,
+    },
+
+    {
         "numToStr/Comment.nvim",
         lazy = false,
     },
@@ -72,7 +108,14 @@ return {
             "lua",
         },
         config = function()
-            require("neodev").setup()
+            require("neodev").setup({
+                library = {
+                    plugins = {
+                        "nvim-dap-ui",
+                    },
+                    types = true,
+                },
+            })
         end,
     },
 
@@ -80,7 +123,7 @@ return {
         "b0o/incline.nvim",
         event = "BufRead",
         dependencies = {
-            "lewis6991/gitsigns.nvim"
+            "lewis6991/gitsigns.nvim",
         },
         config = function()
             require("plugins/incline")

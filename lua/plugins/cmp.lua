@@ -24,6 +24,7 @@ cmp.setup({
         { name = "nvim_lsp_signature_help" },
         { name = "path" },
         { name = "calc" },
+        { name = "mkdnflow" },
     }, {
         { name = "buffer" },
     }),
