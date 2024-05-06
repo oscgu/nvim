@@ -1,1 +1,6 @@
-require("git-conflict").setup{}
+return {
+    "akinsho/git-conflict.nvim",
+    cmd = {
+        "GitConflictListQF",
+    },
+}

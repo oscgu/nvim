@@ -21,3 +21,19 @@ opt.tabstop = 4
 
 opt.splitright = true
 opt.splitbelow = true
+
+vim.diagnostic.config({
+    update_in_insert = true,
+})
+
+local g = vim.g
+
+g.t_co = 256
+g.background = "dark"
+g.mapleader = ","
+g.material_style = "darker"
+g.hidden = true
+g.localleader = ","
+g.material_style = "darker"
+g.hidden = true
+
