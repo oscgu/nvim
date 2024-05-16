@@ -135,7 +135,7 @@ return {
                 hide_gitignored = false,
             },
             follow_current_file = {
-                enabled = false,
+                enabled = true,
             },
             -- time the current file is changed while the tree is open.
             hijack_netrw_behavior = "disabled", -- netrw disabled, opening a directory opens neo-tree
