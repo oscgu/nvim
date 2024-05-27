@@ -20,7 +20,6 @@ return {
             },
             go = {
                 "golangcilint",
-                "codespell",
             },
             dockerfile = {
                 "hadolint",
@@ -45,5 +44,12 @@ return {
                 "actionlint",
             },
         }
+
+        vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
+            callback = function()
+                require("lint").try_lint()
+                require("lint").try_lint({"codespell"})
+            end,
+        })
     end,
 }

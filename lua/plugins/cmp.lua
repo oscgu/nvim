@@ -16,8 +16,7 @@ return {
             "<leader>gp",
             function()
                 vim.diagnostic.goto_prev()
-            end,
-        },
+            end, },
         {
             "<leader>gn",
             function()
@@ -96,8 +95,8 @@ return {
                 end,
             },
             experimental = {
-                ghost_text = true,
-            },
+                ghost_text = true
+            }
         })
 
         cmp.setup.cmdline("/", {

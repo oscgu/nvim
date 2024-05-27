@@ -4,9 +4,11 @@ return {
     event = "VeryLazy",
     dependencies = {
         "nvim-lua/plenary.nvim",
+        "nvim-neotest/nvim-nio",
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-neotest/neotest-go",
+        "nvim-extensions/nvim-ginkgo",
     },
     config = function()
         -- get neotest namespace (api call creates or returns namespace)
@@ -27,13 +29,15 @@ return {
         local nt = require("neotest")
 
         nt.setup({
+            status = { virtual_text = true },
             adapters = {
                 require("neotest-go"),
+                require("nvim-ginkgo"),
             },
         })
 
         vim.api.nvim_create_user_command("NeotestFile", function()
-            nt.run(vim.fn.expand("%"))
+            nt.run.run(vim.fn.expand("%"))
         end, {})
 
         vim.api.nvim_create_user_command("NeotestSummary", function()
@@ -41,7 +45,7 @@ return {
         end, {})
 
         vim.api.nvim_create_user_command("Neotest", function()
-            nt.run(vim.fn.getcwd())
+            nt.run.run(vim.uv.cwd())
         end, {})
     end,
 }

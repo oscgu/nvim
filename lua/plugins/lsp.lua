@@ -10,7 +10,8 @@ return {
             function()
                 vim.lsp.buf.hover()
             end,
-        }, {
+        },
+        {
             "<leader>rn",
             function()
                 vim.lsp.buf.rename()
@@ -144,22 +145,26 @@ return {
         })
 
         lspConfig["gopls"].setup({
+            capabilities = capabilities,
             settings = {
                 gopls = {
                     staticcheck = true,
                     gofumpt = true,
-                    codelenses = {
-                        generate = true,
-                        gc_details = true,
-                        tidy = true,
-                    },
                     hints = {
                         assignVariableTypes = true,
                         compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
                         constantValues = true,
                         functionTypeParameters = true,
                         parameterNames = true,
                         rangeVariableTypes = true,
+                    },
+                    analyses = {
+                        fieldalignment = true,
+                        nilness = true,
+                        unusedparams = true,
+                        unusedwrite = true,
+                        useany = true,
                     },
                 },
             },
