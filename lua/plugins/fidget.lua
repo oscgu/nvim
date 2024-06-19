@@ -7,8 +7,8 @@ return {
                 progress_icon = {
                     pattern = "star",
                     period = 1,
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 }

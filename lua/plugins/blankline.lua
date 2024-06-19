@@ -20,6 +20,6 @@ return {
             "notify",
             "toggleterm",
             "lazyterm",
-        }
-    }
+        },
+    },
 }

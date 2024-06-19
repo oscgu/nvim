@@ -6,7 +6,9 @@ return {
         "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-        require("go").setup()
+        require("go").setup({
+            lsp_codelens = false,
+        })
     end,
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()',

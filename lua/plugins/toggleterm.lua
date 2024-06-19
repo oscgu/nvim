@@ -23,5 +23,5 @@ return {
         size = 15,
         open_mapping = [[<A-T>]],
         direction = "horizontal",
-    }
+    },
 }

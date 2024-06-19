@@ -20,9 +20,6 @@ return {
                 TemplateTemplateParm = "",
                 TemplateParamObject = "",
             },
-            highlights = {
-                detail = "Comment",
-            }
-        }
-    }
+        },
+    },
 }

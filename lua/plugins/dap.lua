@@ -5,42 +5,42 @@ return {
         keys = {
             {
                 "<leader>dbp",
-                function ()
+                function()
                     require("dap").toggle_breakpoint()
-                end
+                end,
             },
             {
                 "<leader>dcb",
-                function ()
+                function()
                     require("dap").clear_breakpoints()
-                end
+                end,
             },
             {
                 "<leader>dc",
-                function ()
+                function()
                     require("dap").continue()
-                end
+                end,
             },
             {
                 "<leader>dsi",
-                function ()
+                function()
                     require("dap").step_into()
-                end
+                end,
             },
             {
                 "<leader>dso",
-                function ()
+                function()
                     require("dap").step_over()
-                end
+                end,
             },
             {
                 "<leader>do",
-                function ()
+                function()
                     require("dap").step_out()
-                end
+                end,
             },
         },
-        config= function ()
+        config = function()
             local dap = require("dap")
 
             dap.adapters.gdb = {
@@ -74,7 +74,7 @@ return {
                 "DapStopped",
                 { text = "▶️", texthl = "", linehl = "", numhl = "" }
             )
-        end
+        end,
     },
     {
         "rcarriga/nvim-dap-ui",
@@ -86,16 +86,16 @@ return {
         keys = {
             {
                 "<leader>dt",
-                function ()
+                function()
                     require("dapui").toggle()
-                end
+                end,
             },
             {
                 "<leader>dho",
-                function ()
+                function()
                     require("dap.ui.widgets").hover()
-                end
+                end,
             },
-        }
+        },
     },
 }

@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+    callback = function()
+        require("lint").try_lint()
+    end,
+})
+
 return {
     "mfussenegger/nvim-lint",
     keys = {
@@ -9,14 +15,10 @@ return {
         },
     },
     config = function()
-        local linter = require("lint")
-
-        linter.linters_by_ft = {
+        local lint = require("lint")
+        lint.linters_by_ft = {
             groovy = {
                 "npm-groovy-lint",
-            },
-            c = {
-                "clangtidy",
             },
             go = {
                 "golangcilint",
@@ -44,12 +46,5 @@ return {
                 "actionlint",
             },
         }
-
-        vim.api.nvim_create_autocmd({ "BufWritePost", "BufRead" }, {
-            callback = function()
-                require("lint").try_lint()
-                require("lint").try_lint({"codespell"})
-            end,
-        })
     end,
 }

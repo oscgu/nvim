@@ -8,7 +8,7 @@ return {
         "onsails/lspkind.nvim",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
+        --"hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-calc",
     },
     keys = {
@@ -16,7 +16,8 @@ return {
             "<leader>gp",
             function()
                 vim.diagnostic.goto_prev()
-            end, },
+            end,
+        },
         {
             "<leader>gn",
             function()
@@ -43,10 +44,6 @@ return {
                     require("luasnip").lsp_expand(args.body)
                 end,
             },
-            window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
-            },
             mapping = cmp.mapping.preset.insert({
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
@@ -57,12 +54,14 @@ return {
             sources = cmp.config.sources({
                 { name = "luasnip" },
                 { name = "nvim_lsp" },
-                { name = "nvim_lsp_signature_help" },
+                --{ name = "nvim_lsp_signature_help" },
                 { name = "path" },
                 { name = "calc" },
                 { name = "mkdnflow" },
-            }, {
-                { name = "buffer" },
+                { name = "lazydev" },
+                {
+                    { name = "buffer" },
+                },
             }),
             sorting = {
                 comparators = {
@@ -95,11 +94,11 @@ return {
                 end,
             },
             experimental = {
-                ghost_text = true
-            }
+                ghost_text = true,
+            },
         })
 
-        cmp.setup.cmdline("/", {
+        cmp.setup.cmdline({ "/", "?" }, {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
                 { name = "buffer" },

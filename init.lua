@@ -29,5 +29,3 @@ require("lazy").setup("plugins", {
         },
     },
 })
-
-require("autocmds")

@@ -5,6 +5,7 @@ return {
             "tsx",
             "jsx",
             "html",
-        }
-    }
+            "templ",
+        },
+    },
 }

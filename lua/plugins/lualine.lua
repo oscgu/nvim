@@ -1,11 +1,9 @@
-local cyberdream = require("lualine.themes.cyberdream")
-
 local lint_progress = function()
     local linters = require("lint").get_running()
     if #linters == 0 then
-        return "󰦕"
+        return "✅"
     end
-    return "󱉶 " .. table.concat(linters, ", ")
+    return "🔎 " .. table.concat(linters, ", ")
 end
 
 return {
@@ -18,7 +16,6 @@ return {
     opts = {
         options = {
             icons_enabled = true,
-            theme = cyberdream,
             component_separators = { left = "|", right = "|" },
             section_separators = "",
             always_divide_middle = true,
@@ -35,21 +32,13 @@ return {
                 {
                     "branch",
                     icon = "",
-                    color = {
-                        bg = "#161821",
-                        fg = "#6b7089",
-                        gui = "bold",
-                    },
                 },
             },
-            lualine_c = {lint_progress},
+            lualine_c = { lint_progress },
             lualine_x = {
                 {
                     require("lazy.status").updates,
                     cond = require("lazy.status").has_updates,
-                    color = {
-                        fg = "#ff9e64",
-                    },
                 },
                 "encoding",
                 "fileformat",

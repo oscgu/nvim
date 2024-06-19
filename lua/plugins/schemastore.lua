@@ -4,5 +4,5 @@ return {
         "yaml",
         "yml",
         "json",
-    }
+    },
 }

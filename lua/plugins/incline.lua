@@ -1,6 +1,6 @@
 return {
     "b0o/incline.nvim",
-    event = "BufRead",
+    event = "VeryLazy",
     dependencies = {
         "lewis6991/gitsigns.nvim",
     },
@@ -19,7 +19,7 @@ return {
 
                 local function get_git_diff()
                     local icons =
-                        { removed = "", changed = "", added = "" }
+                        { removed = " ", changed = " ", added = " " }
                     local signs = vim.b[props.buf].gitsigns_status_dict
                     local labels = {}
                     if signs == nil then
@@ -28,13 +28,13 @@ return {
                     for name, icon in pairs(icons) do
                         if tonumber(signs[name]) and signs[name] > 0 then
                             table.insert(labels, {
-                                icon .. " " .. signs[name] .. " ",
+                                icon .. signs[name] .. " ",
                                 group = "Diff" .. name,
                             })
                         end
                     end
                     if #labels > 0 then
-                        table.insert(labels, { "┊ " })
+                        table.insert(labels, { "| " })
                     end
                     return labels
                 end
@@ -44,7 +44,7 @@ return {
                         error = "",
                         warn = "",
                         info = "",
-                        hint = "",
+                        hint = "󰌵",
                     }
                     local label = {}
 
@@ -62,7 +62,7 @@ return {
                         end
                     end
                     if #label > 0 then
-                        table.insert(label, { "┊ " })
+                        table.insert(label, { "| " })
                     end
                     return label
                 end

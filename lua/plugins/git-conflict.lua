@@ -3,4 +3,5 @@ return {
     cmd = {
         "GitConflictListQF",
     },
+    config = true,
 }

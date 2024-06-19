@@ -43,6 +43,8 @@ return {
         },
     },
     config = function()
+        vim.filetype.add({ extension = { templ = "templ" } })
+
         local signs = {
             Error = "󰅚 ",
             Warn = "󰀪 ",
@@ -55,7 +57,6 @@ return {
         end
 
         local basic_lsps = {
-            "clangd",
             --"solc",
             "solidity_ls_nomicfoundation",
             "tsserver",
@@ -67,10 +68,10 @@ return {
             "pyright",
             "marksman",
             "taplo",
+            "templ",
             "lemminx",
             "dockerls",
             "gradle_ls",
-            "tailwindcss",
             "sqlls",
             "biome",
         }
@@ -87,11 +88,46 @@ return {
             })
         end
 
+        lspConfig["tailwindcss"].setup({
+            capabilities = capabilities,
+            filetypes = {
+                "templ",
+                "astro",
+                "javascript",
+                "typescript",
+                "react",
+            },
+            init_options = { userLanguages = { templ = "html" } },
+        })
+
+        lspConfig["html"].setup({
+            capabilities = capabilities,
+            filetypes = { "html", "templ" },
+        })
+
         lspConfig["clangd"].setup({
-            on_attach = function(client, bufnr)
+            on_attach = function(_, _)
                 require("clangd_extensions.inlay_hints").setup_autocmd()
                 require("clangd_extensions.inlay_hints").set_inlay_hints()
             end,
+        })
+
+        lspConfig["clangd"].setup({
+            capabilities = capabilities,
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--header-insertion=iwyu",
+                "--completion-style=detailed",
+                "--function-arg-placeholders",
+                "--fallback-style=llvm",
+            },
+            init_options = {
+                usePlaceholders = true,
+                completeUnimported = true,
+                clangdFileStatus = true,
+            },
         })
 
         lspConfig["omnisharp"].setup({
@@ -112,10 +148,6 @@ return {
                     },
                 },
             },
-        })
-
-        require("neodev").setup({
-            library = { plugins = true },
         })
 
         lspConfig["lua_ls"].setup({
@@ -150,6 +182,9 @@ return {
                 gopls = {
                     staticcheck = true,
                     gofumpt = true,
+                    codelenses = {
+                        gc_details = true,
+                    },
                     hints = {
                         assignVariableTypes = true,
                         compositeLiteralFields = true,
@@ -162,8 +197,7 @@ return {
                     analyses = {
                         fieldalignment = true,
                         nilness = true,
-                        unusedparams = true,
-                        unusedwrite = true,
+                        unusedvariable = true,
                         useany = true,
                     },
                 },
