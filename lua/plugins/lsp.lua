@@ -66,6 +66,7 @@ return {
             "helm_ls",
             "graphql",
             "pyright",
+            "awk_ls",
             "marksman",
             "taplo",
             "templ",
