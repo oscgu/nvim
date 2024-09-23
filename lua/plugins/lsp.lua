@@ -59,7 +59,8 @@ return {
         local basic_lsps = {
             --"solc",
             "solidity_ls_nomicfoundation",
-            "tsserver",
+            "asm_lsp",
+            "ts_ls",
             "jsonnet_ls",
             "powershell_es",
             "ansiblels",
@@ -71,6 +72,7 @@ return {
             "taplo",
             "templ",
             "lemminx",
+            "zls",
             "dockerls",
             "gradle_ls",
             "sqlls",
@@ -165,7 +167,7 @@ return {
             },
         })
 
-        lspConfig["yamlls"].setup({
+        lspConfig["yamlls"].setup(require("schema-companion").setup_client({
             settings = {
                 yaml = {
                     schemaStore = {
@@ -175,7 +177,7 @@ return {
                     schemas = require("schemastore").yaml.schemas(),
                 },
             },
-        })
+        }))
 
         lspConfig["gopls"].setup({
             capabilities = capabilities,
