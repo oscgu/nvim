@@ -40,7 +40,6 @@ return {
             },
             yaml = {
                 "yamllint",
-                "trivy",
             },
             ghworkflow = {
                 "actionlint",
