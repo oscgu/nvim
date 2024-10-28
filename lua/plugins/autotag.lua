@@ -1,11 +1,9 @@
 return {
-    {
-        "windwp/nvim-ts-autotag",
-        ft = {
-            "tsx",
-            "jsx",
-            "html",
-            "templ",
-        },
+    "windwp/nvim-ts-autotag",
+    ft = {
+        "typescript",
+        "typescriptreact",
+        "html",
+        "templ",
     },
 }

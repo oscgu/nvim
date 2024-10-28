@@ -19,7 +19,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = "Neotree",
     keys = {
-        { "<tab>", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+        { "<tab>", "<cmd>Neotree position=current toggle<cr>", desc = "Toggle Neotree" },
     },
     branch = "v3.x",
     event = "VeryLazy",
@@ -34,7 +34,7 @@ return {
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
-        open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
+        open_files_do_not_replace_types = { "terminal", "trouble" }, -- when opening files, do not use windows containing these filetypes or buftypes
         default_component_configs = {
             container = {
                 enable_character_fade = true,
@@ -138,7 +138,7 @@ return {
                 enabled = true,
             },
             -- time the current file is changed while the tree is open.
-            hijack_netrw_behavior = "disabled", -- netrw disabled, opening a directory opens neo-tree
+            hijack_netrw_behavior = "open_current", -- netrw disabled, opening a directory opens neo-tree
             -- in whatever position is specified in window.position
             -- "open_current",  -- netrw disabled, opening a directory opens within the
             -- window like netrw would, regardless of window.position

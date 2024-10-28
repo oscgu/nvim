@@ -37,6 +37,7 @@ return {
             markdown = { "prettier" },
             sql = { "pgformat" },
             typescript = { "prettier" },
+            typescriptreact = { "prettier" },
             xml = { "tidier" },
             yaml = { "yamlfmt" },
             python = { "black", "isort", "ruff_format" },

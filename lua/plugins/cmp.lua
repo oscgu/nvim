@@ -8,7 +8,6 @@ return {
         "onsails/lspkind.nvim",
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
-        --"hrsh7th/cmp-nvim-lsp-signature-help",
         "hrsh7th/cmp-calc",
     },
     keys = {
@@ -54,7 +53,6 @@ return {
             sources = cmp.config.sources({
                 { name = "luasnip" },
                 { name = "nvim_lsp" },
-                --{ name = "nvim_lsp_signature_help" },
                 { name = "path" },
                 { name = "calc" },
                 { name = "mkdnflow" },

@@ -202,6 +202,7 @@ return {
                         nilness = true,
                         unusedvariable = true,
                         useany = true,
+                        shadow = true,
                     },
                 },
             },
