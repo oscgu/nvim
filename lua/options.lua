@@ -34,6 +34,4 @@ g.mapleader = ","
 g.material_style = "darker"
 g.hidden = true
 g.localleader = ","
-g.material_style = "darker"
-g.hidden = true
 
