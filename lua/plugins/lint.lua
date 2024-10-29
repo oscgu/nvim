@@ -38,6 +38,12 @@ return {
             python = {
                 "flake8",
             },
+            terraform = {
+                "tflint"
+            },
+            ["terraform-vars"] = {
+                "tflint"
+            },
             yaml = {
                 "yamllint",
             },

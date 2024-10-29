@@ -36,6 +36,8 @@ return {
             json = { "jq" },
             markdown = { "prettier" },
             sql = { "pgformat" },
+            terraform = { "terraform_fmt" },
+            ["terraform-vars"] = { "terraform_fmt" },
             typescript = { "prettier" },
             typescriptreact = { "prettier" },
             xml = { "tidier" },

@@ -72,6 +72,7 @@ return {
             "taplo",
             "templ",
             "lemminx",
+            "terraformls",
             "zls",
             "dockerls",
             "gradle_ls",
