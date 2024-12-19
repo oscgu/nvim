@@ -2,6 +2,9 @@ return {
     {
         "mfussenegger/nvim-dap",
         event = "VeryLazy",
+        dependencies = {
+            "leoluz/nvim-dap-go",
+        },
         keys = {
             {
                 "<leader>dbp",
@@ -75,27 +78,5 @@ return {
                 { text = "▶️", texthl = "", linehl = "", numhl = "" }
             )
         end,
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        event = "VeryLazy",
-        dependencies = { "nvim-neotest/nvim-nio" },
-        config = function()
-            require("dapui").setup()
-        end,
-        keys = {
-            {
-                "<leader>dt",
-                function()
-                    require("dapui").toggle()
-                end,
-            },
-            {
-                "<leader>dho",
-                function()
-                    require("dap.ui.widgets").hover()
-                end,
-            },
-        },
     },
 }

@@ -34,7 +34,13 @@ return {
                     icon = "",
                 },
             },
-            lualine_c = { lint_progress },
+            lualine_c = {
+                lint_progress,
+                {
+                    "filename",
+                    path = 1,
+                },
+            },
             lualine_x = {
                 {
                     require("lazy.status").updates,

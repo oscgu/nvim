@@ -1,5 +1,8 @@
 return {
     "neovim/nvim-lspconfig",
+    dependencies = {
+        "Decodetalkers/csharpls-extended-lsp.nvim",
+    },
     event = "BufReadPre",
     opts = {
         inlay_hints = { enabled = true },
@@ -80,9 +83,7 @@ return {
             "biome",
         }
 
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities =
-            require("cmp_nvim_lsp").default_capabilities(capabilities)
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
 
         local lspConfig = require("lspconfig")
 
@@ -134,14 +135,6 @@ return {
             },
         })
 
-        lspConfig["omnisharp"].setup({
-            capabilities = capabilities,
-            cmd = { "omnisharp" },
-            enable_roslyn_analyzers = true,
-            organize_imports_on_format = true,
-            enable_import_completion = true,
-        })
-
         lspConfig["jsonls"].setup({
             capabilities = capabilities,
             settings = {
@@ -180,33 +173,16 @@ return {
             },
         }))
 
+        lspConfig["csharp_ls"].setup({
+            capabilities = capabilities,
+            handlers = {
+                ["textDocument/definition"] = require("csharpls_extended").handler,
+                ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
+            },
+        })
+
         lspConfig["gopls"].setup({
             capabilities = capabilities,
-            settings = {
-                gopls = {
-                    staticcheck = true,
-                    gofumpt = true,
-                    codelenses = {
-                        gc_details = true,
-                    },
-                    hints = {
-                        assignVariableTypes = true,
-                        compositeLiteralFields = true,
-                        compositeLiteralTypes = true,
-                        constantValues = true,
-                        functionTypeParameters = true,
-                        parameterNames = true,
-                        rangeVariableTypes = true,
-                    },
-                    analyses = {
-                        fieldalignment = true,
-                        nilness = true,
-                        unusedvariable = true,
-                        useany = true,
-                        shadow = true,
-                    },
-                },
-            },
         })
     end,
 }
