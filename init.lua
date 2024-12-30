@@ -29,3 +29,24 @@ require("lazy").setup("plugins", {
         },
     },
 })
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>of",
+    ':lua vim.diagnostic.open_float(0, {scope="line"})<enter>',
+    { noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>gn",
+    ':lua vim.diagnostic.goto_next() <enter>',
+    { noremap = true }
+)
+
+vim.api.nvim_set_keymap(
+    "n",
+    "<Leader>gp",
+    ':lua vim.diagnostic.goto_prev() <enter>',
+    { noremap = true }
+)

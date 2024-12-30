@@ -1,17 +1,16 @@
 local lint_progress = function()
     local linters = require("lint").get_running()
     if #linters == 0 then
-        return "✅"
+        return "󱝿"
     end
-    return "🔎 " .. table.concat(linters, ", ")
+    return "󰱼" .. table.concat(linters, ", ")
 end
 
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     dependencies = {
-        "kyazdani42/nvim-web-devicons",
-        "linrongbin16/lsp-progress.nvim",
+        "nvim-tree/nvim-web-devicons",
     },
     opts = {
         options = {
@@ -31,7 +30,7 @@ return {
             lualine_b = {
                 {
                     "branch",
-                    icon = "",
+                    icon = "",
                 },
             },
             lualine_c = {
@@ -40,6 +39,7 @@ return {
                     "filename",
                     path = 1,
                 },
+                "diagnostics",
             },
             lualine_x = {
                 {
@@ -62,10 +62,7 @@ return {
         },
         extensions = {
             "lazy",
-            "neo-tree",
             "toggleterm",
-            "trouble",
-            "nvim-dap-ui",
         },
     },
 }
