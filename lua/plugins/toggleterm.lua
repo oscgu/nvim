@@ -20,8 +20,8 @@ return {
         { "<A-S-t>", "<cmd>ToggleTerm<cr>" },
     },
     opts = {
-        size = 15,
+        size = 80,
         open_mapping = [[<A-T>]],
-        direction = "horizontal",
+        direction = "vertical",
     },
 }
