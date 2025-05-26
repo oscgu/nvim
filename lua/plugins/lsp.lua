@@ -61,6 +61,7 @@ return {
 
         local basic_lsps = {
             --"solc",
+            "arduino_language_server",
             "solidity_ls_nomicfoundation",
             "asm_lsp",
             "ts_ls",
