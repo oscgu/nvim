@@ -2,11 +2,10 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "Decodetalkers/csharpls-extended-lsp.nvim",
+        "saghen/blink.cmp",
+        "b0o/schemastore.nvim",
     },
     event = "BufReadPre",
-    opts = {
-        inlay_hints = { enabled = true },
-    },
     keys = {
         { "<leader>ho", vim.lsp.buf.hover, desc = "Hover" },
         { "<leader>rn", vim.lsp.buf.rename, desc = "Rename" },
@@ -16,6 +15,15 @@ return {
         { "<leader>gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
     },
     config = function()
+        -- Enable inlay hints when LSP attaches
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client and client.supports_method("textDocument/inlayHint") then
+                    vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+                end
+            end,
+        })
         vim.diagnostic.config({
             signs = {
                 text = {
@@ -113,35 +121,6 @@ return {
             },
         })
         vim.lsp.enable("jsonls")
-
-        local adapter = require("schema-companion").adapters.yamlls.setup({
-            sources = {
-                require("schema-companion").sources.matchers.kubernetes.setup({
-                    version = "master",
-                }),
-                require("schema-companion").sources.lsp.setup(),
-                require("schema-companion").sources.schemas.setup({
-                    {
-                        name = "Kubernetes master",
-                        uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json",
-                    },
-                }),
-            },
-        })
-
-        vim.lsp.config(
-            "yamlls",
-            require("schema-companion").setup_client(adapter, {
-                settings = {
-                    yaml = {
-                        format = { enable = true },
-                        validate = true,
-                        schemaStore = { enable = false },
-                    },
-                },
-            })
-        )
-        vim.lsp.enable("yamlls")
 
         vim.lsp.config("bashls", {
             capabilities = capabilities,

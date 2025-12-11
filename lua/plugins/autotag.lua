@@ -6,4 +6,5 @@ return {
         "html",
         "templ",
     },
+    opts = {}
 }
