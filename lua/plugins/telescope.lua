@@ -3,9 +3,9 @@ return {
     cmd = "Telescope",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-        { "<leader>ff", "<cmd>:Telescope find_files<cr>" },
-        { "<leader>lg", "<cmd>:Telescope live_grep<cr>" },
-        { "<leader>fb", "<cmd>:Telescope buffers<cr>" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+        { "<leader>lg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
     },
     opts = {
         pickers = {
@@ -20,9 +20,9 @@ return {
             },
         },
     },
-    config = function (_, opts)
+    config = function(_, opts)
         local telescope = require("telescope")
         telescope.setup(opts)
         telescope.load_extension("csharpls_definition")
-    end
+    end,
 }

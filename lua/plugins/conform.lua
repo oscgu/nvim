@@ -1,18 +1,3 @@
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    callback = function()
-        require("go.format").goimport()
-        require("conform").format({ async = true, lsp_fallback = false })
-    end,
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.c",
-    callback = function()
-        require("conform").format({ async = true, lsp_fallback = false })
-    end,
-})
-
 return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
@@ -45,4 +30,22 @@ return {
             python = { "black", "isort", "ruff_format" },
         },
     },
+    config = function(_, opts)
+        require("conform").setup(opts)
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.go",
+            callback = function()
+                require("go.format").goimport()
+                require("conform").format({ async = false, lsp_fallback = false })
+            end,
+        })
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = "*.c",
+            callback = function()
+                require("conform").format({ async = false, lsp_fallback = false })
+            end,
+        })
+    end,
 }

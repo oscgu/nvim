@@ -1,7 +1,8 @@
 require("options")
+require("keymaps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -29,24 +30,3 @@ require("lazy").setup("plugins", {
         },
     },
 })
-
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>of",
-    ':lua vim.diagnostic.open_float(0, {scope="line"})<enter>',
-    { noremap = true }
-)
-
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>gn",
-    ':lua vim.diagnostic.goto_next() <enter>',
-    { noremap = true }
-)
-
-vim.api.nvim_set_keymap(
-    "n",
-    "<Leader>gp",
-    ':lua vim.diagnostic.goto_prev() <enter>',
-    { noremap = true }
-)

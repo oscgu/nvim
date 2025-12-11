@@ -6,6 +6,7 @@ return {
             function()
                 require("actions-preview").code_actions()
             end,
+            desc = "Code actions menu",
         },
     },
 }

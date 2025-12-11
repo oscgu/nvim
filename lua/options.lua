@@ -34,3 +34,15 @@ g.mapleader = ","
 g.material_style = "darker"
 g.hidden = true
 g.localleader = ","
+
+vim.filetype.add({
+    pattern = {
+        [".*/.github/workflows/.*%.ya?ml"] = "yaml.ghworkflow",
+        [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+        [".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+        [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    },
+    extension = {
+        templ = "templ",
+    },
+})

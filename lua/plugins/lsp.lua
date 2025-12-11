@@ -8,59 +8,26 @@ return {
         inlay_hints = { enabled = true },
     },
     keys = {
-        {
-            "<leader>ho",
-            function()
-                vim.lsp.buf.hover()
-            end,
-        },
-        {
-            "<leader>rn",
-            function()
-                vim.lsp.buf.rename()
-            end,
-        },
-        {
-            "<leader>df",
-            function()
-                vim.lsp.buf.definition()
-            end,
-        },
-        {
-            "<leader>rr",
-            function()
-                vim.lsp.buf.references()
-            end,
-        },
-        {
-            "<leader>sh",
-            function()
-                vim.lsp.buf.signature_help()
-            end,
-        },
-        {
-            "<leader>gi",
-            function()
-                vim.lsp.buf.implementation()
-            end,
-        },
+        { "<leader>ho", vim.lsp.buf.hover, desc = "Hover" },
+        { "<leader>rn", vim.lsp.buf.rename, desc = "Rename" },
+        { "<leader>df", vim.lsp.buf.definition, desc = "Go to definition" },
+        { "<leader>rr", vim.lsp.buf.references, desc = "Find references" },
+        { "<leader>sh", vim.lsp.buf.signature_help, desc = "Signature help" },
+        { "<leader>gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
     },
     config = function()
-        vim.filetype.add({ extension = { templ = "templ" } })
-
         vim.diagnostic.config({
             signs = {
                 text = {
                     [vim.diagnostic.severity.ERROR] = "󰅚 ",
                     [vim.diagnostic.severity.WARN] = "󰀪 ",
-                    [vim.diagnostic.severity.INFO] = " ",
-                    [vim.diagnostic.severity.HINT] = "󰌶 "
-                }
-            }
+                    [vim.diagnostic.severity.INFO] = " ",
+                    [vim.diagnostic.severity.HINT] = "󰌶 ",
+                },
+            },
         })
 
         local basic_lsps = {
-            --"solc",
             "arduino_language_server",
             "solidity_ls_nomicfoundation",
             "asm_lsp",
@@ -82,19 +49,21 @@ return {
             "gradle_ls",
             "sqlls",
             "biome",
+            "lua_ls",
+            "gopls",
+            "jdtls",
         }
 
         local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-        local lspConfig = require("lspconfig")
-
         for _, lsp in ipairs(basic_lsps) do
-            lspConfig[lsp].setup({
+            vim.lsp.config(lsp, {
                 capabilities = capabilities,
             })
+            vim.lsp.enable(lsp)
         end
 
-        lspConfig["tailwindcss"].setup({
+        vim.lsp.config("tailwindcss", {
             capabilities = capabilities,
             filetypes = {
                 "templ",
@@ -105,20 +74,15 @@ return {
             },
             init_options = { userLanguages = { templ = "html" } },
         })
+        vim.lsp.enable("tailwindcss")
 
-        lspConfig["html"].setup({
+        vim.lsp.config("html", {
             capabilities = capabilities,
             filetypes = { "html", "templ" },
         })
+        vim.lsp.enable("html")
 
-        lspConfig["clangd"].setup({
-            on_attach = function(_, _)
-                require("clangd_extensions.inlay_hints").setup_autocmd()
-                require("clangd_extensions.inlay_hints").set_inlay_hints()
-            end,
-        })
-
-        lspConfig["clangd"].setup({
+        vim.lsp.config("clangd", {
             capabilities = capabilities,
             cmd = {
                 "clangd",
@@ -135,8 +99,9 @@ return {
                 clangdFileStatus = true,
             },
         })
+        vim.lsp.enable("clangd")
 
-        lspConfig["jsonls"].setup({
+        vim.lsp.config("jsonls", {
             capabilities = capabilities,
             settings = {
                 json = {
@@ -147,12 +112,38 @@ return {
                 },
             },
         })
+        vim.lsp.enable("jsonls")
 
-        lspConfig["lua_ls"].setup({
-            capabilities = capabilities,
+        local adapter = require("schema-companion").adapters.yamlls.setup({
+            sources = {
+                require("schema-companion").sources.matchers.kubernetes.setup({
+                    version = "master",
+                }),
+                require("schema-companion").sources.lsp.setup(),
+                require("schema-companion").sources.schemas.setup({
+                    {
+                        name = "Kubernetes master",
+                        uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json",
+                    },
+                }),
+            },
         })
 
-        lspConfig["bashls"].setup({
+        vim.lsp.config(
+            "yamlls",
+            require("schema-companion").setup_client(adapter, {
+                settings = {
+                    yaml = {
+                        format = { enable = true },
+                        validate = true,
+                        schemaStore = { enable = false },
+                    },
+                },
+            })
+        )
+        vim.lsp.enable("yamlls")
+
+        vim.lsp.config("bashls", {
             capabilities = capabilities,
             settings = {
                 shellcheck = {
@@ -161,29 +152,15 @@ return {
                 },
             },
         })
+        vim.lsp.enable("bashls")
 
-        lspConfig["yamlls"].setup(require("schema-companion").setup_client({
-            settings = {
-                yaml = {
-                    schemaStore = {
-                        enable = false,
-                        url = "",
-                    },
-                    schemas = require("schemastore").yaml.schemas(),
-                },
-            },
-        }))
-
-        lspConfig["csharp_ls"].setup({
+        vim.lsp.config("csharp_ls", {
             capabilities = capabilities,
             handlers = {
                 ["textDocument/definition"] = require("csharpls_extended").handler,
                 ["textDocument/typeDefinition"] = require("csharpls_extended").handler,
             },
         })
-
-        lspConfig["gopls"].setup({
-            capabilities = capabilities,
-        })
+        vim.lsp.enable("csharp_ls")
     end,
 }
